@@ -22,7 +22,7 @@ Depot::Application.configure do
     port: 587,
     domain: "nandalu.idv.tw", 
     authentication: "plain",
-    user_name: "awaw", 
+    user_name: "awaw@nandalu.idv.tw", 
     password: "5jm8ouxc", 
     enable_starttls_auto: true
   }

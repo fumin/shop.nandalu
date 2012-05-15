@@ -9,6 +9,7 @@ class ProductsControllerTest < ActionController::TestCase
       image_url: 'lorem.jpg',
       price: 19.95
     }
+    @ruby_product = products(:ruby)
   end
 
   test "should get index" do
@@ -51,5 +52,19 @@ class ProductsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to products_path
+  end
+
+  test "should receive atom feed for product" do
+    get :who_bought, id: @ruby_product, format: "atom"
+    assert_select "feed>entry" do
+      assert_select "title", /Order \d/
+      assert_select "summary>div>p:first-of-type", 
+        /Shipped to MyAddress/
+      assert_select "summary>div>table>tr:nth-of-type(2)>td:first-of-type",
+        /Programming Ruby 1.9/
+      assert_select "summary>div>p:last-of-type", /Paid by Check/
+      assert_select "author>name", /Dave Thomas/
+      assert_select "author>email", /dave@example.org/
+    end
   end
 end
