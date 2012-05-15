@@ -8,6 +8,17 @@ Depot::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "nandalu.idv.tw",
+    authentication: "plain",
+    user_name: "awaw@nandalu.idv.tw",
+    password: "5jm8ouxc",
+    enable_starttls_auto: true
+  }
+
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 
