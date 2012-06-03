@@ -4,7 +4,7 @@
 en:
   layouts:
     application:
-      title: "媽，我成功了"
+      title: "welcome JohnFly"
       home: "Home"
       questions: "Questions"
       news: "News"
