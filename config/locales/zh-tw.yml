@@ -1,0 +1,48 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+zh-tw:
+  layouts:
+    application:
+      title: "屏東紅寶石蝦"
+      home: "Home"
+      questions: "Questions"
+      news: "新聞"
+      contact: "聯絡"
+
+  store:
+    index:
+      title_html: "您的購蝦目錄"
+      add_html: "加入推車"
+
+  carts: 
+    cart:
+      title: "您的推車" 
+      empty: "清空推車" 
+      checkout: "報價"
+
+  number:
+    currency:
+      format:
+        unit: "$"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format: "%u%n"
+
+  orders: 
+    new:
+      legend: "請輸入您的訂購資訊" 
+    form:
+      address_html: "地址"
+      pay_prompt_html: "請選擇付款方式" 
+      submit: "下單"
+
+  helpers:
+    label:
+      order:
+        name: "姓名"
+        email: "E-mail"
+        pay_type: "付款方式"  
+
+  thanks: "感謝您的訂購"
