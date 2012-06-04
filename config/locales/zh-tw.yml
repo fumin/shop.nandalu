@@ -4,7 +4,8 @@
 zh-tw:
   layouts:
     application:
-      title: "屏東紅寶石蝦"
+      site_title: "佳冬蝦"
+      title: "屏東佳冬紅寶石蝦"
       home: "Home"
       questions: "Questions"
       news: "新聞"

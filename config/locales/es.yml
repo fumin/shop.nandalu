@@ -1,6 +1,7 @@
 es:
   layouts:
      application:
+       site_title: "Jia Dong Shrimp"
        title: "Publicaciones de Pragmatic"
        home: "Inicio"
        questions: "Preguntas"

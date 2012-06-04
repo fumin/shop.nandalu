@@ -4,6 +4,7 @@
 en:
   layouts:
     application:
+      site_title: "Jia Dong shrimp"
       title: "hello MilesKK!!"
       home: "Home"
       questions: "Questions"
