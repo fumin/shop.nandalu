@@ -15,7 +15,7 @@
       <%= submit_tag 'submit' %>
       <%= javascript_tag "$('.locale input').hide()" %> 
     <% end %>
-    <%= image_tag("logo.png") %>
+    <%= image_tag("logo.png", size: "119x33") %>
     <%= @page_title || t('.title') %>
   </div>
   <div id = "columns">
@@ -29,7 +29,7 @@
       <ul>
         <li><a href="http://www...."><%= t('.home') %></a></li>
         <li><a href="http://www..../faq"><%= t('.questions') %></a></li> 
-        <li><a href="http://www..../news"><%= t('news') %></a></li> 
+        <li><a href="http://www..../news"><%= t('.news') %></a></li> 
         <li><a href="http://www..../contact"><%= t('.contact') %></a></li>
       </ul> 
 
