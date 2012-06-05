@@ -4,22 +4,23 @@
 en:
   layouts:
     application:
-      title: "hello MilesKK!!"
-      home: "Home"
-      questions: "Questions"
-      news: "News"
-      contact: "Contact"
+      site_title: "鮮嫩白蝦"
+      title: "產地:屏東佳冬"
+      home: "首頁"
+      questions: "疑難雜症"
+      news: "訊息快報"
+      contact: "聯絡我們"
 
   store:
     index:
-      title_html: "Your Pragmatic Catalog"
-      add_html: "Add to Cart"
+      title_html: "您的購蝦目錄"
+      add_html: "加入推車"
 
   carts: 
     cart:
-      title: "Your Cart" 
-      empty: "Empty cart" 
-      checkout: "Checkout"
+      title: "您的推車" 
+      empty: "清空推車" 
+      checkout: "報價"
 
   number:
     currency:
@@ -32,17 +33,17 @@ en:
 
   orders: 
     new:
-      legend: "Please Enter Your Details" 
+      legend: "請輸入您的訂購資訊" 
     form:
-      address_html: "Address"
-      pay_prompt_html: "Select a payment method" 
-      submit: "Place Order"
+      address_html: "寄送地址"
+      pay_prompt_html: "請選購付款方式" 
+      submit: "下單"
 
   helpers:
     label:
       order:
-        name: "Name"
+        name: "姓名"
         email: "E-mail"
-        pay_type: "Pay with"  
+        pay_type: "付款"  
 
-  thanks: "Thanks you for your order"
+  thanks: "感謝您的選購"

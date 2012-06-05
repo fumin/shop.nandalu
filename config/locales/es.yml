@@ -1,6 +1,7 @@
 es:
   layouts:
      application:
+       site_title: "Jia Dong Camarones"
        title: "Publicaciones de Pragmatic"
        home: "Inicio"
        questions: "Preguntas"
