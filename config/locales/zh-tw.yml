@@ -1,7 +1,8 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+
+zh-tw:
   layouts:
     application:
       site_title: "鮮嫩白蝦"
@@ -10,6 +11,7 @@ en:
       questions: "疑難雜症"
       news: "訊息快報"
       contact: "聯絡我們"
+
 
   store:
     index:
@@ -35,8 +37,12 @@ en:
     new:
       legend: "請輸入您的訂購資訊" 
     form:
+
       address_html: "寄送地址"
       pay_prompt_html: "請選購付款方式" 
+
+ 
+
       submit: "下單"
 
   helpers:
@@ -47,3 +53,6 @@ en:
         pay_type: "付款"  
 
   thanks: "感謝您的選購"
+
+     
+
