@@ -40,6 +40,7 @@ es:
     label:
       order:
         name: "Nombre"
+        phonenumber: "número de teléfono"
         email: "E-mail"
         pay_type: "Forma de pago"
 
