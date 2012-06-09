@@ -7,6 +7,10 @@ Depot::Application.routes.draw do
     delete 'logout' => :destroy
   end
   scope '(:locale)' do 
+    get "main/aboutus"
+    get "main/paymethod"
+    get "main/news"
+    get "main/contactus"
     resources :users 
     resources :orders 
     resources :line_items 

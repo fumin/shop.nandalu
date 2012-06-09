@@ -28,10 +28,12 @@
       <% end %>
 
       <ul>
-        <li><a href="http://www...."><%= t('.home') %></a></li>
-        <li><a href="http://www..../faq"><%= t('.questions') %></a></li> 
-        <li><a href="http://www..../news"><%= t('.news') %></a></li> 
-        <li><a href="http://www..../contact"><%= t('.contact') %></a></li>
+        <li><a href="/main/aboutus"><%= t('.home') %></a></li>
+        <li><a href="/main/paymethod"><%= t('.questions') %></a></li> 
+        <!-- <li><a href="http://www..../news"><%= t('.news') %></a></li> -->
+        <li><%= link_to t('.news'), controller: :main, action: :news %></li>
+        <!-- <li><a href="/main/contactus"><%= t('.contact') %></a></li> -->
+        <li><%= link_to t('.contact'), main_contactus_path  %></li>
       </ul> 
 
       <% if session[:user_id] %> 
@@ -44,7 +46,7 @@
       <% end %>
     </div>
     <div id="main">
-      <%= yield %>
+      <%= yield %> 
     </div>
   </div>
 </body>
