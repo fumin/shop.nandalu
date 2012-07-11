@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/chuckremes/ffi-rzmq.git
+  revision: 865a2b1f880bae1e2821b9a7e9d03aea5a603fba
+  specs:
+    ffi-rzmq (0.9.5)
+      ffi
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -109,6 +116,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
   ffi
+  ffi-rzmq!
   jquery-rails
   pg
   rails (= 3.2.3)
