@@ -5,10 +5,10 @@
 # It is necessary for linking the library.
 
 # The name that we can dlopen(3).
-dlname=''
+dlname='libzmq.so.3'
 
 # Names of this library.
-library_names=''
+library_names='libzmq.so.3.0.0 libzmq.so.3 libzmq.so'
 
 # The name of the static archive.
 old_library='libzmq.a'
