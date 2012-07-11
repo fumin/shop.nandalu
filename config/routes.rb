@@ -11,6 +11,7 @@ Depot::Application.routes.draw do
     get "main/paymethod"
     get "main/news"
     get "main/contactus"
+    get "main/zmq"
     resources :users 
     resources :orders 
     resources :line_items 
