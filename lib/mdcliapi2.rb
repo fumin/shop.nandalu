@@ -5,7 +5,7 @@
 # Author: Tom van Leeuwen <tom@vleeuwen.eu>
 # Based on Python example by Min RK
 
-require 'ffi-rzmq'
+require 'ffi-rzmq/lib/ffi-rzmq'
 require 'mdp'
 
 class MajorDomoClient
