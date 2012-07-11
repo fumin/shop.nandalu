@@ -11,7 +11,7 @@ class MainController < ApplicationController
   def zmq
     client = MajorDomoClient.new('tcp://geneva3.godfat.org:5555')
     puts "client connected!"
-    requests = 10
+    requests = 100
     requests.times do |i|
       request = 'Hello world'
       begin
