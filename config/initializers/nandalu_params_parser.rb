@@ -6,12 +6,10 @@ class NandaluParamsParser
     @app.call(change_path(env))
   end
   def change_path env
-    ma = /^\/service\/(\w+)(\/[\w\/]*)/.match(env["PATH_INFO"])
-    ma1 = /^\/service\/(\w+)$/.match(env["PATH_INFO"])
-    if ma
-      env.merge("PATH_INFO" => "/service", user_id: ma[1], service_path: ma[2])
-    elsif ma1
-      env.merge("PATH_INFO" => "/service", user_id: ma[1], service_path: "")
+    m = %r{^/service/(?<user_id>\w+)(?<service_path>/?.*)$}.match(env['PATH_INFO'])
+    if m
+      env.merge('PATH_INFO' => '/service', 
+                user_id: m['user_id'], service_path: m['service_path'])
     else
       env
     end

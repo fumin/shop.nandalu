@@ -10,7 +10,7 @@ class MainController < ApplicationController
 
   def route_login
     r = Route.find_by_user_name(params[:user_name])
-    if r.password == params[:password]
+    if r && r.password == params[:password]
       current_service_hash = SecureRandom.uuid
       r.current_service_hash = current_service_hash
       r.save
@@ -36,31 +36,16 @@ class MainController < ApplicationController
       @msg = "The apple device #{env[:user_id]} you requested is not online"
       return
     end
+    request = env[:service_path]
 
-    #client = MajorDomoClient.new('tcp://geneva3.godfat.org:5555')
-    puts "client connected!"
-    requests = 100
-    requests.times do |i|
-      request = env[:service_path] # 'Hello world'
-      begin
-        client.send(service, request)
-	#client.send('echo', request)
-        puts "i = #{i}"
-      end
+    # querying for an image
+    m = %r{^/images/\d+$}.match(request)
+    if m
+      client.send(service, request)
+      image = client.recv().join("")
+      client.close
+      send_data image, file_name: "#{m[1]}.jpg", type: "image/jpeg"
     end
 
-    count = 0
-    while count < requests do
-      begin
-	reply = client.recv
-        puts "count = #{count}, reply = #{reply}"
-      end
-      count += 1
-    end
-
-    client.close
-
-    @msg = "#{count} requests/replies processed env[:user_id] = #{env[:user_id]}, env[:service_path] = #{env[:service_path]}"
-    puts "#{count} requests/replies processed"
   end
 end
