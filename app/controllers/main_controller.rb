@@ -44,14 +44,17 @@ class MainController < ApplicationController
       client.send(service, request)
       #image = client.recv().join("")
       #client.close
-      image = Enumerator.new do |y|
+      self.response.headers["Content-Type"] = "image/jpeg"
+      self.response.headers["Content-Disposition"] = "inline; filename=#{m[1]}.jpg"
+      self.response.headers["Last-Modified"] = Time.now.ctime.to_s
+      self.response_body = Enumerator.new do |y|
 puts "[DEBUG] we're recving image..."
-                img = client.recv().join("")
-                client.close
-                y << img
-              end 
-      send_data image, file_name: "#{m[1]}.jpg",
-                type: "image/jpeg", disposition: "inline"
+                             img = client.recv().join("")
+                             client.close
+                             y << img
+                           end
+      #send_data image, file_name: "#{m[1]}.jpg",
+      #          type: "image/jpeg", disposition: "inline"
     end
 
   end
