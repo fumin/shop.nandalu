@@ -42,9 +42,17 @@ class MainController < ApplicationController
     m = %r{^/images/\d+$}.match(request)
     if m
       client.send(service, request)
-      image = client.recv().join("")
-      client.close
-      send_data image, file_name: "#{m[1]}.jpg", type: "image/jpeg"
+      #image = client.recv().join("")
+      #client.close
+      #send_data image, file_name: "#{m[1]}.jpg", 
+      #          type: "image/jpeg", disposition: "inline"
+      send_data Enumerator.new do |y|
+                  image = client.recv().join("")
+                  client.close
+                  y << image
+                end,
+                file_name: "#{m[1]}.jpg", type: "image/jpeg",
+                disposition: "inline"
     end
 
   end
