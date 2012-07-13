@@ -48,10 +48,12 @@ class MainController < ApplicationController
       self.response.headers["Content-Disposition"] = "inline; filename=#{m[1]}.jpg"
       self.response.headers["Last-Modified"] = Time.now.ctime.to_s
       self.response_body = Enumerator.new do |y|
-puts "[DEBUG] we're recving image..."
-                             img = client.recv().join("")
-                             client.close
-                             y << img
+                             more_parts = true
+                             while more_parts
+                               more_parts, buf = client.my_recv()
+puts "[DEBUG] we've recved, more_parts? = #{more_parts}, buf.size = #{buf.size}"
+                               y << buff
+                             end
                            end
       #send_data image, file_name: "#{m[1]}.jpg",
       #          type: "image/jpeg", disposition: "inline"

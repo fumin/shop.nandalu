@@ -20,6 +20,8 @@ class MajorDomoClient
     @poller = ZMQ::Poller.new
     @timeout = 2500
 
+    @header_read = false
+
     reconnect_to_broker
   end
 
@@ -38,6 +40,29 @@ class MajorDomoClient
     request = ['', MDP::C_CLIENT, service].concat(request)
 
     @client.send_strings request
+    nil
+  end
+
+  def my_recv
+    items = @poller.poll(@timeout)
+    buffer = ""
+    if items
+      unless @headers_read
+        rc = @client.recv_string buffer # empty
+        return unless rc == 0
+        rc = @client.recv_string buffer
+        return unless rc == 0
+        if buffer != MDP::C_CLIENT
+          raise RuntimeError, "Not a valid MDP message"
+        end
+        rc = @client.recv_string buffer # service
+        return unless rc == 0
+        @headers_read = true
+      end
+      @client.recv_string buffer
+      return unless rc == 0
+      [@client.more_parts?, buffer]
+    end
     nil
   end
 
