@@ -44,15 +44,13 @@ class MainController < ApplicationController
       client.send(service, request)
       #image = client.recv().join("")
       #client.close
-      #send_data image, file_name: "#{m[1]}.jpg", 
-      #          type: "image/jpeg", disposition: "inline"
-      send_data Enumerator.new do |y|
-                  image = client.recv().join("")
-                  client.close
-                  y << image
-                end,
-                file_name: "#{m[1]}.jpg", type: "image/jpeg",
-                disposition: "inline"
+      image = Enumerator.new do |y|
+                img = client.recv().join("")
+                client.close
+                y << img
+              end 
+      send_data image, file_name: "#{m[1]}.jpg",
+                type: "image/jpeg", disposition: "inline"
     end
 
   end
