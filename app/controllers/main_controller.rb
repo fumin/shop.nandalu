@@ -45,6 +45,7 @@ class MainController < ApplicationController
       #image = client.recv().join("")
       #client.close
       image = Enumerator.new do |y|
+puts "[DEBUG] we're recving image..."
                 img = client.recv().join("")
                 client.close
                 y << img
