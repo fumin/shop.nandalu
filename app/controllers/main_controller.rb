@@ -39,20 +39,21 @@ class MainController < ApplicationController
     request = env[:service_path]
 
     # querying for an image
-    m = %r{^/images/\d+$}.match(request)
+    m = %r{^/images/(?<img_index>\d+)(?:\.[[:alpha:]]+)?$}.match(request)
     if m
       client.send(service, request)
       #image = client.recv().join("")
       #client.close
       self.response.headers["Content-Type"] = "image/jpeg"
-      self.response.headers["Content-Disposition"] = "inline; filename=#{m[1]}.jpg"
+      self.response.headers["Content-Disposition"] = "inline; filename=#{m['img_index']}.jpg"
       self.response.headers["Last-Modified"] = Time.now.ctime.to_s
       self.response_body = Enumerator.new do |y|
                              more_parts = true
                              while more_parts
-                               more_parts, buf = client.my_recv()
-puts "[DEBUG] we've recved, more_parts? = #{more_parts}, buf.size = #{buf.size}"
-                               y << buff
+                               buf = client.recv()
+                               more_parts = false if buf.size == 1
+puts "[DEBUG] we've recved, more_parts = #{more_parts}, buf[0].size = #{buf[0].size} #{Time.now}"
+                               y << Zlib.inflate(buf[0])
                              end
                            end
       #send_data image, file_name: "#{m[1]}.jpg",
